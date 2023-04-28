@@ -8,9 +8,13 @@ const User = require('../users/users-model')
     "message": "You shall not pass!"
   }
 */
-function restricted(req, res, next) {
-  console.log("passing through restricted middleware");
-  next();
+async function restricted(req, res, next) {
+  console.log(req.session.user);
+  if(req.session.user) {
+    next();
+  } else {
+    next({status: 401, message: "You shall not pass!"})
+  }
 }
 
 /*

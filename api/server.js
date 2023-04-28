@@ -36,13 +36,13 @@ server.use(session({
   },
   resave: false,
   saveUninitialized: false,
-  // store: new Store({    // creates table of sessions so multiple people can be logged in
-  //   knex: require('../data/db-config'),
-  //   tablename: 'sessions',
-  //   sidfieldname: 'sid',
-  //   createtable: true,
-  //   clearInterval: 1000 * 60 * 60 // 1 hr
-  // })
+  store: new Store({   
+    knex: require('../data/db-config'),
+    tablename: 'sessions',
+    sidfieldname: 'sid',
+    createtable: true,
+    clearInterval: 1000 * 60 * 60 // 1 hr
+  })
 }))
 
 
